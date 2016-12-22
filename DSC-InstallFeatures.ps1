@@ -1,8 +1,13 @@
+# This Script Contains a Configuration to generate MOF files for Windows Feature Installation.
+# This Example installs IIS and IIS Management Console
+
+# $remote stands for remote servers for feature installtion
+$remote="srv1, srv2"
+
+# Name a Configuration, You Should Check Syntax first, using: Get-DscResource -Name windowsfeature -Syntax 
 Configuration TestConfig{
-    Node DC{
+    Node $remote{
         WindowsFeature IIS{
-        # Check Syntax first
-        # Get-DscResource -Name windowsfeature -Syntax 
           Name = 'web-server'
           # Install IIS, so it is 'Present' xD
           Ensure = 'Present'
